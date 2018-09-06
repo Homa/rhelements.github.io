@@ -61,7 +61,7 @@
 
     - ES6
 
-      If you don't want to support IE11, you don't need to include any polyfill.
+      If you don't want to support IE11 or FireFox, you don't need to include any polyfill.
 
       ```bash
       npm install @rhelements/rh-card --save

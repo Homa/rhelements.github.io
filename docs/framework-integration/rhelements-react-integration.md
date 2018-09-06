@@ -12,7 +12,7 @@
 
     In this step, we install and include an RHElement (i.e. rh-card) and polyfill libraries, if needed, in our app.
 
-    - if support for IE11 IS NOT needed, just install and include the web components that you want
+    - if support for IE11 or FireFox IS NOT needed, just install and include the web components that you want
 
     ```bash
     npm install @rhelements/rh-card --save
