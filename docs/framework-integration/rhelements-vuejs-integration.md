@@ -77,3 +77,11 @@
       <div slot="footer">Text in footer</div>
     </rh-card>
     ```
+
+#Adding [reveal] to body tag
+
+`<body [reveal]>`
+
+By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+
+For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
