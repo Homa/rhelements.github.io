@@ -16,8 +16,7 @@
 
     We will use webcomponents-loader.js here to support all the latest browsers.
 
-    In React, even if you don't need to load polyfill, you still need to load custom-elements-es5-adapter.js.
-
+    In React app, if you use Babel, even if you don't need to load polyfill, you still need to load custom-elements-es5-adapter.js. (Reference: https://reactjs.org/docs/web-components.html#using-react-in-your-web-components)
 
     ```bash
     # Installing the polyfill library
@@ -55,7 +54,7 @@
     Import the element into your component file. In this example, we add it to App.js
 
     ```
-    import '@rhelements/rh-card/rh-card.js';
+    import '@rhelements/rh-card/rh-card';
     ```
 
     Or you can add pollyfills to public/index.html:
@@ -90,7 +89,7 @@
     </rh-card>
     ```
 
-#Adding [reveal] attribute to body tag
+## Adding [reveal] attribute to body tag
 
 `<body [reveal]>`
 
