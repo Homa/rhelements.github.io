@@ -44,9 +44,9 @@
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.4/custom-elements-es5-adapter.js"></script>
     ```
 
-3. Add RHElements:
+3. Add RHElement web component:
 
-    In this step, we install and include an RHElement (i.e. rh-card) in our app.
+    In this step, we install and include an RHElement (i.e. rh-card) web component in our app.
 
     ```bash
     npm install @rhelements/rh-card --save
