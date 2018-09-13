@@ -1,4 +1,4 @@
-# Add web component to React app
+# Add RHElement web component to React app
 
 1. To start, scaffold a React app:
 
@@ -8,62 +8,64 @@
     npm start
     ```
 
-2. Add RHElements:
+2.  Add Polyfill and ES5 adaptor
 
-    In this step, we install and include an RHElement (i.e. rh-card) and polyfill libraries, if needed, in our app.
+    Latest versions of most of the browsers except IE and FireFox, support custom elements. In next version of FireFox, Firefox  63, custom element support is included. If you want to support all browsers, you have to use polyfill. (https://caniuse.com/#feat=custom-elementsv1)
 
-    - if support for IE11 or FireFox IS NOT needed, just install and include the web components that you want
-
-    ```bash
-    npm install @rhelements/rh-card --save
-    ```
-
-    ```html
-    <script src="node_modules/@rhelements/rh-card/rh-card.js" type="module"></script>
-    ```
-    Note: Don't forget to add type="module".
-
-    Or import the element into App.js
-
-    ```
-    import '@rhelements/rh-card/rh-card.js';
-    ```
-
-    - If you want to support the latest versions of most of the browsers, you have to use polyfills.
-
-    ##POLYFILLS
-
-    If you target a specific browser, you can load the bundle that is needed by it. Please reference here to find the one that meets your needs: https://github.com/webcomponents/webcomponentsjs/tree/v1#how-to-use
+    Google Polymer team has developed a set of polyfills for custom elements support.If you target a specific browser, you can load the bundle that is needed by it. Please reference here to find the one that meets your needs: https://github.com/webcomponents/webcomponentsjs/tree/v1#how-to-use
 
     We will use webcomponents-loader.js here to support all the latest browsers.
+
+    In React, even if you don't need to load polyfill, you still need to load custom-elements-es5-adapter.js.
+
 
     ```bash
     # Installing the polyfill library
     npm install @webcomponents/webcomponentsjs --save
     ```
 
-    Add pollyfills to public/index.html:
+    Open index.js and add these lines on top of the file:
+    ```
+    import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter';
+    import '@webcomponents/webcomponentsjs/webcomponents-loader';
+    ```
+
+    Or you can add pollyfills to public/index.html:
 
     ```html
     <script src="/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     ```
 
-    Or
-    ```
-    import the unpkg or cdn versions of the polyfills.
+    Or use cdn versions of the polyfills.
 
     ```html
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.4/webcomponents-loader.js"></script>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.4/custom-elements-es5-adapter.js"></script>
     ```
-    ##ADD RHElement rh-card
 
+3. Add RHElements:
+
+    In this step, we install and include an RHElement (i.e. rh-card) in our app.
 
     ```bash
     npm install @rhelements/rh-card --save
-    npm install requirejs --save
     ```
+
+    Import the element into your component file. In this example, we add it to App.js
+
+    ```
+    import '@rhelements/rh-card/rh-card.js';
+    ```
+
+    Or you can add pollyfills to public/index.html:
+    ```html
+    <script src="node_modules/@rhelements/rh-card/rh-card.js" type="module"></script>
+    ```
+    Note: Don't forget to add type="module".
+
+
+    Or use UMD version:
 
     ```html
     <!-- If you use UMD version -->
@@ -74,7 +76,7 @@
     ```
 
 
-3. Open /src/App.js and add:
+4. Open /src/App.js and add:
 
     ```html
     <rh-card theme="dark">
@@ -87,10 +89,11 @@
       <div slot="footer">Text in footer</div>
     </rh-card>
     ```
-    #Adding [reveal] to body tag
 
-    `<body [reveal]>`
+#Adding [reveal] attribute to body tag
 
-    By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+`<body [reveal]>`
 
-    For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
+By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+
+For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
