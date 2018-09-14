@@ -63,17 +63,13 @@
     ```
     Note: Don't forget to add type="module".
 
-
     Or use UMD version:
 
     ```html
     <!-- If you use UMD version -->
     <script src="/node_modules/requirejs/require.js"></script>
     <script>require(['/node_modules/@rhelements/rh-card/rh-card.umd.js'])</script>
-    <!--  Or -->
-    <script src="/src/rh-card/rh-card.js" type="module"></script>
     ```
-
 
 4. Open /src/App.js and add:
 
