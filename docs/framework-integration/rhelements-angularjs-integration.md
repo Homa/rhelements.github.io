@@ -1,9 +1,7 @@
-# Add web Component to AngularJs app
-
-
+# Add RHElement web component to AngularJs app
 
 1. To start, scaffold an AngularJs app by using AngularJs app generator
-called generator-gulp-angular. Visit this link for more information about the
+called generator-gulp-angular. Visit this link to learn more about the
 generator:
 
     [https://github.com/Swiip/generator-gulp-angular](hhttps://github.com/Swiip/generator-gulp-angular)
@@ -17,14 +15,32 @@ generator:
     gulp serve
     ```
 
-2.  Add Polyfill and ES5 adaptor
+2. Add /node_modules/ path to our build system:
+
+    Open gulp/server.js and find this line:
+    ```javascript
+    routes = {
+        '/bower_components': 'bower_components'
+    };
+    ```
+    Changed it to:
+    ```javascript
+    routes = {
+      '/node_modules/': 'node_modules',
+      '/bower_components': 'bower_components'
+    };
+    ```
+
+    This allows us to reference and inject node modules in index file.
+
+3.  Add Polyfill and ES5 adaptor
 
     Latest versions of most of the browsers except IE and FireFox, support custom elements. In next version of FireFox, Firefox  63, custom element support is included. If you want to support all browsers, you have to use polyfill. (https://caniuse.com/#feat=custom-elementsv1)
 
     Google Polymer team has developed a set of polyfills for custom elements support. If you target a specific browser, you can load the bundle that is needed by it. Please reference here to find the one that meets your needs: https://github.com/webcomponents/webcomponentsjs/tree/v1#how-to-use
 
     ```bash
-    bower install --save webcomponents/webcomponentsjs#^1.0.0
+    npm install @webcomponents/webcomponentsjs --save
     ```
 
     Next step is adding polyfills to public/index.html:
@@ -35,8 +51,9 @@ generator:
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
 
     <!-- endbower -->
-    <script src="../bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
     <!-- endbuild -->
 
     <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
@@ -51,26 +68,7 @@ generator:
     <!-- endbuild -->
     ```
 
-3. Add RHElement web component:
-
-    RHElements only support npm install. We need to add /node_modules/ path to our build system.
-
-    Open gulp/server.js and find this line:
-    ```javascript
-    routes = {
-        '/bower_components': 'bower_components'
-    };
-    ```
-
-    Changed it to:
-    ```javascript
-    routes = {
-      '/node_modules/': 'node_modules',
-      '/bower_components': 'bower_components'
-    };
-    ```
-
-    This allows us to reference and inject node modules in index file.
+4. Add RHElement web component:
 
     In this step, we install and include web component library that we want to use (rh-card) in our app.
 
@@ -142,7 +140,7 @@ generator:
 
         Note: Don't forget to add type="module" in script tag.
 
-3. Using the web component
+5. Using installed web component
 
     Replace this block of code:
 
@@ -189,7 +187,10 @@ For more information visit https://github.com/webcomponents/webcomponentsjs#webc
   `<body [reveal]>`
 
 2. Include related css file.
-  You need to add a css file that contains the styles for smooth page opacity transition. Open src/index.js and add this line on top of the file:
-  ```
-  import '@rhelements/rhelement/rhelement.min.css';
+  You need to add a css file that contains the styles for smooth page opacity transition. Open public/index.html and add css file in the designated space for vendor css:
+
+  ```html
+  <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+  <link media="all" rel="stylesheet" type="text/css" href="../node_modules/@rhelements/rhelement/rhelement.min.css">
+  <!-- bower:css -->
   ```
