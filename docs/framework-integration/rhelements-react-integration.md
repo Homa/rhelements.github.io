@@ -91,11 +91,12 @@ By adding [reveal] attribute to body tag, behind the scene, RHElement waits for 
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
 
-1.  Adding [reveal] attribute to body tag and include related css file:
+1. Add [reveal] attribute to body tag:
 
   `<body [reveal]>`
 
-2. You need to add css file that contains the styles for smooth page opacity transition. Open src/index.js and add this line on top of the file:
+2. Include related css file.
+  You need to add a css file that contains the styles for smooth page opacity transition. Open src/index.js and add this line on top of the file:
   ```
   import '@rhelements/rhelement/rhelement.min.css';
   ```
