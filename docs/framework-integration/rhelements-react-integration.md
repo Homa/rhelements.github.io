@@ -12,7 +12,7 @@
 
     Latest versions of most of the browsers except IE and FireFox, support custom elements. In next version of FireFox, Firefox  63, custom element support is included. If you want to support all browsers, you have to use polyfill. (https://caniuse.com/#feat=custom-elementsv1)
 
-    Google Polymer team has developed a set of polyfills for custom elements support.If you target a specific browser, you can load the bundle that is needed by it. Please reference here to find the one that meets your needs: https://github.com/webcomponents/webcomponentsjs/tree/v1#how-to-use
+    Google Polymer team has developed a set of polyfills for custom elements support. If you target a specific browser, you can load the bundle that is needed by it. Please reference here to find the one that meets your needs: https://github.com/webcomponents/webcomponentsjs/tree/v1#how-to-use
 
     We will use webcomponents-loader.js here to support all the latest browsers.
 
@@ -85,10 +85,17 @@
     </rh-card>
     ```
 
-## Adding [reveal] attribute to body tag
-
-`<body [reveal]>`
+## Reveal page smoothly
 
 By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
+
+1.  Adding [reveal] attribute to body tag and include related css file:
+
+  `<body [reveal]>`
+
+2. You need to add css file that contains the styles for smooth page opacity transition. Open src/index.js and add this line on top of the file:
+  ```
+  import '@rhelements/rhelement/rhelement.min.css';
+  ```

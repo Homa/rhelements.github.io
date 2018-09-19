@@ -1,6 +1,6 @@
 # Add web Component to AngularJs app
 
-First, we scaffold a project. Since AngularJs is version one of Angular and all old AngularJs projects typically use gulp and angular Modules (rather than ES6 modules), we use a generator to generate a project for us based on the old style.
+
 
 1. To start, scaffold an AngularJs app by using AngularJs app generator
 called generator-gulp-angular. Visit this link for more information about the
@@ -178,10 +178,17 @@ generator:
     </div>
     ```
 
-## Adding [reveal] attribute to body tag
-
-`<body [reveal]>`
+## Reveal page smoothly
 
 By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
+
+1.  Adding [reveal] attribute to body tag and include related css file:
+
+  `<body [reveal]>`
+
+2. You need to add css file that contains the styles for smooth page opacity transition. Open src/index.js and add this line on top of the file:
+  ```
+  import '@rhelements/rhelement/rhelement.min.css';
+  ```
