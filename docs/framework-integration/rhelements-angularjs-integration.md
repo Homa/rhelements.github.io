@@ -1,10 +1,12 @@
 # Add web Component to AngularJs app
 
-1. To start, scaffold an angularjs app by using angularjs app generator
+First, we scaffold a project. Since AngularJs is version one of Angular and all old AngularJs projects typically use gulp and angular Modules (rather than ES6 modules), we use a generator to generate a project for us based on the old style.
+
+1. To start, scaffold an AngularJs app by using AngularJs app generator
 called generator-gulp-angular. Visit this link for more information about the
 generator:
 
-    [https://medium.com/bitmaker-software/scaffolding-a-new-angularjs-project-db01151f16e0](https://medium.com/bitmaker-software/scaffolding-a-new-angularjs-project-db01151f16e0)
+    [https://github.com/Swiip/generator-gulp-angular](hhttps://github.com/Swiip/generator-gulp-angular)
 
     ```bash
     npm install -g yo gulp bower
@@ -15,7 +17,43 @@ generator:
     gulp serve
     ```
 
-2. Adding the installed packages
+2.  Add Polyfill and ES5 adaptor
+
+    Latest versions of most of the browsers except IE and FireFox, support custom elements. In next version of FireFox, Firefox  63, custom element support is included. If you want to support all browsers, you have to use polyfill. (https://caniuse.com/#feat=custom-elementsv1)
+
+    Google Polymer team has developed a set of polyfills for custom elements support. If you target a specific browser, you can load the bundle that is needed by it. Please reference here to find the one that meets your needs: https://github.com/webcomponents/webcomponentsjs/tree/v1#how-to-use
+
+    ```bash
+    bower install --save webcomponents/webcomponentsjs#^1.0.0
+    ```
+
+    Next step is adding polyfills to public/index.html:
+
+    ```html
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+
+    <!-- endbower -->
+    <script src="../bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+    ```
+
+3. Add RHElement web component:
+
+    RHElements only support npm install. We need to add /node_modules/ path to our build system.
 
     Open gulp/server.js and find this line:
     ```javascript
@@ -34,21 +72,17 @@ generator:
 
     This allows us to reference and inject node modules in index file.
 
-3. Install needed packages:
-
-    In this step, we install and include web component library that we want to use (rh-card) and polyfill libraries, in our app.
+    In this step, we install and include web component library that we want to use (rh-card) in our app.
 
     Here are listed three options to include RHElements:
 
     - ES5 UMD compatible
         ```bash
-        bower install --save webcomponents/webcomponentsjs#^1.0.0
         bower install --save requirejs
         npm install @rhelements/rh-card --save
         ```
 
         Next step is adding installed packages to public/index.html:
-
 
         ```html
         <!-- build:js(src) scripts/vendor.js -->
@@ -77,7 +111,6 @@ generator:
     - ES6 compiled to ES5
 
         ```bash
-        npm install @webcomponents/webcomponentsjs --save
         npm install @rhelements/rh-card --save
         ```
 
@@ -145,7 +178,7 @@ generator:
     </div>
     ```
 
-#Adding [reveal] attribute to body tag
+## Adding [reveal] attribute to body tag
 
 `<body [reveal]>`
 
