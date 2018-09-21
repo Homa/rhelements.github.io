@@ -137,7 +137,7 @@ For more information visit https://github.com/webcomponents/webcomponentsjs#webc
 
 1. Add [reveal] attribute to body tag:
 
-  `<body [reveal]>`
+  `<body reveal>`
 
 2. Include related css file.
   You need to add a css file that contains the styles for smooth page opacity transition. Open src/index.js and add this line on top of the file:
