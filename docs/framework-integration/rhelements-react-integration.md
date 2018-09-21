@@ -23,13 +23,8 @@
     npm install @webcomponents/webcomponentsjs --save
     ```
 
-    Open index.js and add these lines on top of the file:
-    ```
-    import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter';
-    import '@webcomponents/webcomponentsjs/webcomponents-loader';
-    ```
-
-    Or you can add pollyfills to public/index.html:
+    Open public/index.html and add pollyfills to public/index.html head section.
+    Note: Pollyfill files need to be loaded before other files. Don't try to load them inside your app.
 
     ```html
     <script src="/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
@@ -43,7 +38,42 @@
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.4/custom-elements-es5-adapter.js"></script>
     ```
 
-3. Add RHElement web component:
+3. Add theme
+
+    RHElements uses a set of css variables to apply theme to all its web components. You can customize provided theme variables by changing css variable values. For more information visit: (https://rhelements.github.io/theme/).
+
+    IE and FireFox don't support ShadowDOM. ShadyCSS provides a library to simulate ShadowDOM style encapsulation (reference: https://github.com/webcomponents/shadycss)
+
+    Css variables file, polyfills and a hack for IE and FireFox support are included in cp-theme component. To install, run:
+
+    ```bash
+    npm install @rhelements/cp-theme --save
+    ```
+
+    #### Use RHElements theme
+
+    If you all browsers, open src/index.js and add this js file to your app::
+    ```html
+    import '@rhelements/cp-theme/cp-theme.umd';
+    ```
+
+    If you don't support IE and FireFox, simply open src/index.js and add this css file to your app:
+    ```html
+    import '@rhelements/cp-theme/cp-theme.css';
+    ```
+
+    #### Add font:
+    RHElements uses overpass font. You need add link to the font in to public/index.html file:
+
+    ```
+    <link rel="stylesheet" href="http://overpass-30e2.kxcdn.com/overpass.css" />
+    ```
+
+    ### Customize RHElements theme
+    In order to customize the theme with your css variable values, go to this folder
+    '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
+
+4. Add RHElement web component:
 
     In this step, we install and include an RHElement (i.e. rh-card) web component in our app.
 
@@ -54,14 +84,14 @@
     Import the element into your component file. In this example, we add it to App.js
 
     ```
-    import '@rhelements/rh-card/rh-card';
+    import '@rhelements/rh-card/rh-card.umd';
     ```
 
     Or you can add pollyfills to public/index.html:
     ```html
-    <script src="node_modules/@rhelements/rh-card/rh-card.js" type="module"></script>
+    <script src="node_modules/@rhelements/rh-card/rh-card.umd.js" type="module"></script>
     ```
-    Note: Don't forget to add type="module".
+    Note: Don't forget to add `type="module"` to script tag.
 
     Or use UMD version:
 
