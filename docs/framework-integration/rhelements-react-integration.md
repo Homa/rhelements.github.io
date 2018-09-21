@@ -8,7 +8,7 @@
     npm start
     ```
 
-2.  Add Polyfill and ES5 adaptor
+2. Add Polyfill and ES5 adaptor
 
     Latest versions of most of the browsers except IE and FireFox, support custom elements. In next version of FireFox, Firefox  63, custom element support is included. If you want to support all browsers, you have to use polyfill. (https://caniuse.com/#feat=custom-elementsv1)
 
@@ -72,6 +72,19 @@
     ### Customize RHElements theme
     In order to customize the theme with your css variable values, go to this folder
     '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
+
+
+    ### Change theme by using inline style
+
+      If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of specific card to green, add style={{'--rh-theme--color--surface--base': 'green'}} to <rh-card> target
+      ```html
+      <rh-card theme="dark" style={{'--rh-theme--color--surface--base': 'green'}}>
+        <h2 slot="header">Dark Theme</h2>
+      This is rh-card with a dark theme.
+        <div slot="footer">Text in footer</div>
+      </rh-card>
+      ```
+
 
 4. Add RHElement web component:
 
