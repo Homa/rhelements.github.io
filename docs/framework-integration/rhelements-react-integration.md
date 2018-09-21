@@ -76,7 +76,8 @@
 
     ### Change theme by using inline style
 
-      If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of specific card to green, add style={{'--rh-theme--color--surface--base': 'green'}} to <rh-card> target
+      If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style={{'--rh-theme--color--surface--base': 'green'}} to rh-card:
+
       ```html
       <rh-card theme="dark" style={{'--rh-theme--color--surface--base': 'green'}}>
         <h2 slot="header">Dark Theme</h2>
