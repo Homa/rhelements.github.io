@@ -2,31 +2,29 @@
 
 1. To start, scaffold an AngularJs app by using AngularJs app generator
 called generator-gulp-angular. Visit this link to learn more about the
-generator:
-
-    [https://github.com/Swiip/generator-gulp-angular](hhttps://github.com/Swiip/generator-gulp-angular)
+generator: (https://github.com/Swiip/generator-gulp-angular)
 
     ```bash
     npm install -g yo gulp bower
     npm install -g generator-gulp-angular
-    mkdir angularjs-web-component
-    cd angularjs-web-component
+    mkdir angularjs-rhelements
+    cd angularjs-rhelements
     yo gulp-angular
     gulp serve
     ```
 
-2. Add /node_modules/ path to our build system:
+2. Add /node_modules path to our build system:
 
     Open gulp/server.js and find this line:
     ```javascript
     routes = {
-        '/bower_components': 'bower_components'
+      '/bower_components': 'bower_components'
     };
     ```
     Changed it to:
     ```javascript
     routes = {
-      '/node_modules/': 'node_modules',
+      '/node_modules': 'node_modules',
       '/bower_components': 'bower_components'
     };
     ```
@@ -68,7 +66,56 @@ generator:
     <!-- endbuild -->
     ```
 
-4. Add RH Elements web component:
+4. Add theme
+
+    RH Elements uses a set of css variables to apply theme to all its web components. You can customize provided theme variables by changing css variable values. For more information visit: (https://rhelements.github.io/theme/).
+
+    IE and FireFox don't support ShadowDOM. ShadyCSS provides a library to simulate ShadowDOM style encapsulation (reference: https://github.com/webcomponents/shadycss)
+
+    Css variables file, polyfills and a hack for IE and FireFox support are included in cp-theme component. To install, run:
+
+    ```bash
+    npm install @rhelements/cp-theme --save
+    ```
+
+    #### Use RH Elements theme
+
+    If you all browsers, open src/index.js and add this js file to your app::
+    ```html
+    import '@rhelements/cp-theme/cp-theme.umd';
+    ```
+
+    If you don't support IE and FireFox, simply open src/index.js and add this css file to your app:
+    ```html
+    import '@rhelements/cp-theme/cp-theme.css';
+    ```
+
+    #### Add font:
+    RH Elements uses overpass font. You need add link to the font in to public/index.html file:
+
+    ```
+    <link rel="stylesheet" href="http://overpass-30e2.kxcdn.com/overpass.css" />
+    ```
+
+    ### Customize RH Elements theme
+    In order to customize the theme with your css variable values, go to this folder
+    '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
+
+
+    ### Change theme by using inline style
+
+      If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style={{'--rh-theme--color--surface--base': 'green'}} to rh-card:
+
+      ```html
+      <rh-card theme="dark" style={{'--rh-theme--color--surface--base': 'green'}}>
+        <h2 slot="header">Dark Theme</h2>
+      This is rh-card with a dark theme.
+        <div slot="footer">Text in footer</div>
+      </rh-card>
+      ```
+
+
+5. Add RH Elements web component:
 
     In this step, we install and include web component library that we want to use (rh-card) in our app.
 
@@ -135,12 +182,12 @@ generator:
         <!-- angular templates will be automatically converted in js and inserted here -->
         <!-- endinject -->
         <!-- endbuild -->
-        <script src="/rh-card/rh-card.js" type="module"></script>
+        <script src="/rh-card/rh-card.umd.js" type="module"></script>
         ```
 
         Note: Don't forget to add type="module" in script tag.
 
-5. Using installed web component
+6. Using installed web component
 
     Replace this block of code:
 
