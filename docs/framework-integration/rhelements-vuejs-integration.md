@@ -1,4 +1,4 @@
-# Add web component to Vue app
+# Add RH Elements to Vue app
 
 1. To start, scaffold a Vuejs app:
 
@@ -13,7 +13,7 @@
 
     In this step, we install and include web component library that we want to use (rh-card) and polyfill libraries, if needed, in our app.
 
-    Here are listed three options to include RHElements:
+    Here are listed three options to include RH Elements:
 
     - ES5 UMD compatible
         ```bash
@@ -80,13 +80,13 @@
 
 ## Reveal page smoothly
 
-By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+By adding [reveal] attribute to body tag, behind the scene, RH Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
 
 1. Add [reveal] attribute to body tag:
 
-  `<body [reveal]>`
+  `<body reveal>`
 
 2. Include related css file.
   You need to add a css file that contains the styles for smooth page opacity transition. Open src/index.js and add this line on top of the file:

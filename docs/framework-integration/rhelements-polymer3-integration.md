@@ -1,4 +1,4 @@
-### Add web component to Polymer 3  app
+# Add RH Elements to Polymer 3  app
 
 1. To start, scaffold a Polymerjs 3 app:
 
@@ -54,7 +54,7 @@
 
 ## Reveal page smoothly
 
-By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+By adding [reveal] attribute to body tag, behind the scene, RH Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
 

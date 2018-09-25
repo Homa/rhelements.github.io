@@ -1,4 +1,4 @@
-# Add RHElement web component to React app
+# Add RH Elements to React app
 
 1. To start, scaffold a React app:
 
@@ -40,7 +40,7 @@
 
 3. Add theme
 
-    RHElements uses a set of css variables to apply theme to all its web components. You can customize provided theme variables by changing css variable values. For more information visit: (https://rhelements.github.io/theme/).
+    RH Elements uses a set of css variables to apply theme to all its web components. You can customize provided theme variables by changing css variable values. For more information visit: (https://rhelements.github.io/theme/).
 
     IE and FireFox don't support ShadowDOM. ShadyCSS provides a library to simulate ShadowDOM style encapsulation (reference: https://github.com/webcomponents/shadycss)
 
@@ -50,7 +50,7 @@
     npm install @rhelements/cp-theme --save
     ```
 
-    #### Use RHElements theme
+    #### Use RH Elements theme
 
     If you all browsers, open src/index.js and add this js file to your app::
     ```html
@@ -63,13 +63,13 @@
     ```
 
     #### Add font:
-    RHElements uses overpass font. You need add link to the font in to public/index.html file:
+    RH Elements uses overpass font. You need add link to the font in to public/index.html file:
 
     ```
     <link rel="stylesheet" href="http://overpass-30e2.kxcdn.com/overpass.css" />
     ```
 
-    ### Customize RHElements theme
+    ### Customize RH Elements theme
     In order to customize the theme with your css variable values, go to this folder
     '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
 
@@ -87,9 +87,9 @@
       ```
 
 
-4. Add RHElement web component:
+4. Add RH Elements web component to your app:
 
-    In this step, we install and include an RHElement (i.e. rh-card) web component in our app.
+    In this step, we install and include an RH Elements (i.e. rh-card) web component in our app.
 
     ```bash
     npm install @rhelements/rh-card --save
@@ -115,7 +115,7 @@
     <script>require(['/node_modules/@rhelements/rh-card/rh-card.umd.js'])</script>
     ```
 
-4. Open /src/App.js and add:
+    Open /src/App.js and add:
 
     ```html
     <rh-card theme="dark">
@@ -131,7 +131,7 @@
 
 ## Reveal page smoothly
 
-By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+By adding [reveal] attribute to body tag, behind the scene, RH Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
 

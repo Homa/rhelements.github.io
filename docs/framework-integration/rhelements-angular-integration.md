@@ -1,4 +1,4 @@
-# Add web component to Angular app
+# Add RH Elements to Angular app
 
 1. To start, scaffold an angular app:
 
@@ -13,7 +13,7 @@
 
     In this step, we install and include web component library that we want to use (rh-card) and polyfill libraries, if needed, in our app.
 
-    Here are listed three options to include RHElements:
+    Here are listed three options to include RH Elements:
 
     - ES5 UMD compatible
 
@@ -32,7 +32,7 @@
       <!-- web components polyfill -->
       <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-      <!-- load require and require RHElement -->
+      <!-- load require and require RH Elements -->
       <script src="/node_modules/requirejs/require.js"></script>
       <script>require(['/src/rh-card/rh-card.umd.js'])</script>
       ```
@@ -53,7 +53,7 @@
       <!-- web components polyfill -->
       <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-      <!-- load RHElement -->
+      <!-- load RH Elements -->
       <script src="/src/rh-card/rh-card.js" type="module"></script>
       ```
 
@@ -70,7 +70,7 @@
       Open src/index.html and add installed packages:
 
       ```html
-      <!-- load RHElement -->
+      <!-- load RH Elements -->
       <script src="/src/rh-card/rh-card.js" type="module"></script>
       ```
 
@@ -129,7 +129,7 @@ content of src/app/app.component.html with:
 
 ## Reveal page smoothly
 
-By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+By adding [reveal] attribute to body tag, behind the scene, RH Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
 

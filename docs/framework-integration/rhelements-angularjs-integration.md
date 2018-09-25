@@ -1,4 +1,4 @@
-# Add RHElement web component to AngularJs app
+# Add RH Elements to AngularJs app
 
 1. To start, scaffold an AngularJs app by using AngularJs app generator
 called generator-gulp-angular. Visit this link to learn more about the
@@ -68,11 +68,11 @@ generator:
     <!-- endbuild -->
     ```
 
-4. Add RHElement web component:
+4. Add RH Elements web component:
 
     In this step, we install and include web component library that we want to use (rh-card) in our app.
 
-    Here are listed three options to include RHElements:
+    Here are listed three options to include RH Elements:
 
     - ES5 UMD compatible
         ```bash
@@ -178,7 +178,7 @@ generator:
 
 ## Reveal page smoothly
 
-By adding [reveal] attribute to body tag, behind the scene, RHElement waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+By adding [reveal] attribute to body tag, behind the scene, RH Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
 
