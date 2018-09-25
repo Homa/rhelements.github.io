@@ -3,8 +3,8 @@
 1. To start, scaffold a React app:
 
     ```bash
-    create-react-app react-web-component
-    cd react-web-component
+    create-react-app react-rhelements
+    cd react-rhelements
     npm start
     ```
 

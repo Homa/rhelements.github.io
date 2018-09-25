@@ -5,8 +5,8 @@
     ```bash
     npm install -g bower
     npm install -g polymer-cli
-    mkdir polymer-web-component
-    cd polymer-web-component
+    mkdir polymer-rhelements
+    cd polymer-rhelements
     polymer init
     ```
 

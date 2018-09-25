@@ -4,8 +4,8 @@
 
     ```bash
     npm install -g
-    vue create vue-web-component
-    cd vue-web-component
+    vue create vue-rhelements
+    cd vue-rhelements
     npm run serve
     ```
 

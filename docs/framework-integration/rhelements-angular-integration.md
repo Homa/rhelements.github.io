@@ -4,8 +4,8 @@
 
     ```bash
     npm install -g
-    ng new angular-web-component
-    cd angular-web-component
+    ng new angular-rhelements
+    cd angular-rhelements
     ng serve --open
     ```
 
