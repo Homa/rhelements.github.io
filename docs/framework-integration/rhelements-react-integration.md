@@ -74,19 +74,6 @@
     '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
 
 
-    ### Change theme by using inline style
-
-      If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style={{'--rh-theme--color--surface--base': 'green'}} to rh-card:
-
-      ```html
-      <rh-card theme="dark" style={{'--rh-theme--color--surface--base': 'green'}}>
-        <h2 slot="header">Dark Theme</h2>
-      This is rh-card with a dark theme.
-        <div slot="footer">Text in footer</div>
-      </rh-card>
-      ```
-
-
 4. Add RH Elements web component to your app:
 
     In this step, we install and include an RH Elements (i.e. rh-card) web component in our app.
@@ -128,6 +115,18 @@
       <div slot="footer">Text in footer</div>
     </rh-card>
     ```
+
+## Change theme by using inline style
+
+  If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style={{'--rh-theme--color--surface--base': 'green'}} to rh-card:
+
+  ```html
+  <rh-card theme="dark" style={{'--rh-theme--color--surface--base': 'green'}}>
+    <h2 slot="header">Dark Theme</h2>
+  This is rh-card with a dark theme.
+    <div slot="footer">Text in footer</div>
+  </rh-card>
+  ```
 
 ## Reveal page smoothly
 
