@@ -71,7 +71,7 @@
 
     ### Customize RH Elements theme
     In order to customize the theme with your css variable values, go to this folder
-    '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
+    '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd.js (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
 
 
 4. Add RH Elements web component to your app:
