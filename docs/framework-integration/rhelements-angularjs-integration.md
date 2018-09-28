@@ -80,14 +80,35 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
 
     #### Use RH Elements theme
 
-    If you all browsers, open src/index.js and add this js file to your app::
+    Open src/index.html and add installed packages:
+
     ```html
-    import '@rhelements/cp-theme/cp-theme.umd';
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+
+    <!-- endbower -->
+    <!-- Todo - add rh-card npm path-->
+    <script src="../bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+    <script src="../node_modules/@rhelements/cp-theme/cp-theme.umd.js"></script>
     ```
 
-    If you don't support IE and FireFox, simply open src/index.js and add this css file to your app:
+    If you don't support IE and FireFox, simply open index.html and add this css file to your app:
     ```html
-    import '@rhelements/cp-theme/cp-theme.css';
+    <link rel="stylesheet" href="/node_modules/@rhelements/cp-theme/cp-theme.css" />
     ```
 
     #### Add font:
@@ -101,95 +122,50 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
     In order to customize the theme with your css variable values, go to this folder
     '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
 
-
-    ### Change theme by using inline style
-
-      If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style={{'--rh-theme--color--surface--base': 'green'}} to rh-card:
-
-      ```html
-      <rh-card theme="dark" style={{'--rh-theme--color--surface--base': 'green'}}>
-        <h2 slot="header">Dark Theme</h2>
-      This is rh-card with a dark theme.
-        <div slot="footer">Text in footer</div>
-      </rh-card>
-      ```
-
-
 5. Add RH Elements web component:
 
     In this step, we install and include web component library that we want to use (rh-card) in our app.
 
     Here are listed three options to include RH Elements:
 
-    - ES5 UMD compatible
-        ```bash
-        bower install --save requirejs
-        npm install @rhelements/rh-card --save
-        ```
 
-        Next step is adding installed packages to public/index.html:
+    ```bash
+    npm install @rhelements/rh-card --save
+    ```
 
-        ```html
-        <!-- build:js(src) scripts/vendor.js -->
-        <!-- bower:js -->
-        <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    Open src/index.html and add installed packages:
 
-        <!-- endbower -->
-        <!-- Todo - add rh-card npm path-->
-        <script src="../bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-        <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-        <!-- endbuild -->
+    ```html
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
 
-        <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
-        <!-- inject:js -->
-        <!-- js files will be automatically insert here -->
+    <!-- endbower -->
+    <!-- Todo - add rh-card npm path-->
+    <script src="../bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <!-- endbuild -->
 
-        <!-- endinject -->
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
 
-        <!-- inject:partials -->
-        <!-- angular templates will be automatically converted in js and inserted here -->
-        <!-- endinject -->
-        <!-- endbuild -->
-        <script>require(['/rh-card/rh-cta.umd.js'])</script>
-        ```
+    <!-- endinject -->
 
-    - ES6 compiled to ES5
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+    <script src="../node_modules/@rhelements/cp-theme/cp-theme.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+    <script>require(['../node_modules/@rhelements/rh-card/rh-card.umd.js'])</script>
+    ```
 
-        ```bash
-        npm install @rhelements/rh-card --save
-        ```
-
-        Open src/index.html and add installed packages:
-
-        ```html
-        <!-- build:js(src) scripts/vendor.js -->
-        <!-- bower:js -->
-        <!-- run `gulp inject` to automatically populate bower script dependencies -->
-
-        <!-- endbower -->
-        <!-- Todo - add rh-card npm path-->
-        <script src="../bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
-        <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-        <!-- endbuild -->
-
-        <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
-        <!-- inject:js -->
-        <!-- js files will be automatically insert here -->
-
-        <!-- endinject -->
-
-        <!-- inject:partials -->
-        <!-- angular templates will be automatically converted in js and inserted here -->
-        <!-- endinject -->
-        <!-- endbuild -->
-        <script src="/rh-card/rh-card.umd.js" type="module"></script>
-        ```
-
-        Note: Don't forget to add type="module" in script tag.
+    Note: Don't forget to add type="module" in script tag.
 
 6. Using installed web component
 
-    Replace this block of code:
+    Open src/app/main/main.html Replace this block of code:
 
     ```html
     <div class="row">
@@ -211,17 +187,28 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
     ```html
     <div class="row">
       <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-        <rh-card theme="dark" style="overflow: hidden; height: 250px;margin-bottom: 15px;">
+        <rh-card theme="dark" priority="primary" color="accent" style="overflow: hidden; height: 250px;margin-bottom: 15px;">
           <h2 slot="header">{{ awesomeThing.title }}</h2>
-          <div slot="footer">
-            <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
-            <a ng-href="{{awesomeThing.url}}">{{ awesomeThing.url }}</a>
-            <p>{{ awesomeThing.description }}</p>
-          </div>
+          <p><a ng-href="{{awesomeThing.url}}">{{ awesomeThing.url }}</a></p>
+        This is rh-card with a dark theme.
+          <div slot="footer">{{ awesomeThing.description }}</div>
         </rh-card>
       </div>
     </div>
     ```
+
+### Change theme by using inline style
+
+  If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style="--rh-card--bg: green;" to rh-card:
+
+  ```html
+  <div class="item" data-text="boop"></div>
+  <rh-card theme="dark" style="--rh-card--bg: green;">
+    <h2 slot="header">Dark Theme</h2>
+  This is rh-card with a dark theme.
+    <div slot="footer">Text in footer</div>
+  </rh-card>
+  ```
 
 ## Reveal page smoothly
 
