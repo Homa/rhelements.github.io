@@ -1,10 +1,10 @@
-# Add RH Elements to React app
+# Add PatternFly Elements to React app
 
 1. To start, scaffold a React app:
 
     ```bash
-    create-react-app react-rhelements
-    cd react-rhelements
+    create-react-app react-patternfly-element
+    cd react-patternfly-element
     npm start
     ```
 
@@ -40,57 +40,57 @@
 
 3. Add theme
 
-    RH Elements uses a set of css variables to apply theme to all its web components. You can customize provided theme variables by changing css variable values. For more information visit: (https://rhelements.github.io/theme/).
+    PatternFly Elements uses a set of css variables to apply theme to all its web components. You can customize provided theme variables by changing css variable values. For more information visit: (https://rhelements.github.io/theme/).
 
     IE and FireFox don't support ShadowDOM. ShadyCSS provides a library to simulate ShadowDOM style encapsulation (reference: https://github.com/webcomponents/shadycss)
 
     Css variables file, polyfills and a hack for IE and FireFox support are included in cp-theme component. To install, run:
 
     ```bash
-    npm install @rhelements/cp-theme --save
+    npm install @patternfly/cp-theme --save
     ```
 
-    #### Use RH Elements theme
+    #### Use PatternFly Elements theme
 
     If you all browsers, open src/index.js and add this js file to your app::
     ```html
-    import '@rhelements/cp-theme/cp-theme.umd';
+    import '@patternfly/cp-theme/cp-theme.umd';
     ```
 
     If you don't support IE and FireFox, simply open src/index.js and add this css file to your app:
     ```html
-    import '@rhelements/cp-theme/cp-theme.css';
+    import '@patternfly/cp-theme/cp-theme.css';
     ```
 
     #### Add font:
-    RH Elements uses overpass font. You need add link to the font in to public/index.html file:
+    PatternFly Elements uses overpass font. You need add link to the font in to public/index.html file:
 
     ```
     <link rel="stylesheet" href="http://overpass-30e2.kxcdn.com/overpass.css" />
     ```
 
-    ### Customize RH Elements theme
+    ### Customize PatternFly Elements theme
     In order to customize the theme with your css variable values, go to this folder
-    '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd.js (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
+    '/node_modules/@patternfly/cp-theme/' and copy cp-theme.umd.js (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
 
 
-4. Add RH Elements web component to your app:
+4. Add PatternFly Elements web component to your app:
 
-    In this step, we install and include an RH Elements (i.e. rh-card) web component in our app.
+    In this step, we install and include an PatternFly Elements (i.e. pfe-card) web component in our app.
 
     ```bash
-    npm install @rhelements/rh-card --save
+    npm install @patternfly/pfe-card --save
     ```
 
     Import the element into your component file. In this example, we add it to App.js
 
     ```
-    import '@rhelements/rh-card/rh-card.umd';
+    import '@patternfly/pfe-card/pfe-card.umd';
     ```
 
     Or you can add pollyfills to public/index.html:
     ```html
-    <script src="node_modules/@rhelements/rh-card/rh-card.umd.js" type="module"></script>
+    <script src="node_modules/@patternfly/pfe-card/pfe-card.umd.js" type="module"></script>
     ```
     Note: Don't forget to add `type="module"` to script tag.
 
@@ -99,38 +99,38 @@
     ```html
     <!-- If you use UMD version -->
     <script src="/node_modules/requirejs/require.js"></script>
-    <script>require(['/node_modules/@rhelements/rh-card/rh-card.umd.js'])</script>
+    <script>require(['/node_modules/@patternfly/pfe-card/pfe-card.umd.js'])</script>
     ```
 
     Open /src/App.js and add:
 
     ```html
-    <rh-card theme="dark">
+    <pfe-card theme="dark">
       <h2 slot="header">Dark Theme</h2>
-    This is rh-card with a dark theme.
+    This is pfe-card with a dark theme.
       <div slot="footer">Text in footer</div>
-    </rh-card>
-    <rh-card theme="light">
+    </pfe-card>
+    <pfe-card theme="light">
       <h2 slot="header">Light Theme</h2>
       <div slot="footer">Text in footer</div>
-    </rh-card>
+    </pfe-card>
     ```
 
 ## Change theme by using inline style
 
-  If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style={{'--rh-theme--color--surface--base': 'green'}} to rh-card:
+  If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style={{'--pfe-theme--color--surface--base': 'green'}} to pfe-card:
 
   ```html
-  <rh-card theme="dark" style={{'--rh-theme--color--surface--base': 'green'}}>
+  <pfe-card theme="dark" style={{'--pfe-theme--color--surface--base': 'green'}}>
     <h2 slot="header">Dark Theme</h2>
-  This is rh-card with a dark theme.
+  This is pfe-card with a dark theme.
     <div slot="footer">Text in footer</div>
-  </rh-card>
+  </pfe-card>
   ```
 
 ## Reveal page smoothly
 
-By adding [reveal] attribute to body tag, behind the scene, RH Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+By adding [reveal] attribute to body tag, behind the scene, PatternFly Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
 
@@ -141,5 +141,5 @@ For more information visit https://github.com/webcomponents/webcomponentsjs#webc
 2. Include related css file.
   You need to add a css file that contains the styles for smooth page opacity transition. Open src/index.js and add this line on top of the file:
   ```
-  import '@rhelements/rhelement/rhelement.min.css';
+  import '@patternfly/pfelement/pfelement.min.css';
   ```

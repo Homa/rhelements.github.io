@@ -1,4 +1,4 @@
-# Add RH Elements to AngularJs app
+# Add PatternFly Elements to AngularJs app
 
 1. To start, scaffold an AngularJs app by using AngularJs app generator
 called generator-gulp-angular. Visit this link to learn more about the
@@ -7,8 +7,8 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
     ```bash
     npm install -g yo gulp bower
     npm install -g generator-gulp-angular
-    mkdir angularjs-rhelements
-    cd angularjs-rhelements
+    mkdir angularjs-patternfly-element
+    cd angularjs-patternfly-element
     yo gulp-angular
     gulp serve
     ```
@@ -68,17 +68,17 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
 
 4. Add theme
 
-    RH Elements uses a set of css variables to apply theme to all its web components. You can customize provided theme variables by changing css variable values. For more information visit: (https://rhelements.github.io/theme/).
+    PatternFly Elements uses a set of css variables to apply theme to all its web components. You can customize provided theme variables by changing css variable values. For more information visit: (https://rhelements.github.io/theme/).
 
     IE and FireFox don't support ShadowDOM. ShadyCSS provides a library to simulate ShadowDOM style encapsulation (reference: https://github.com/webcomponents/shadycss)
 
     Css variables file, polyfills and a hack for IE and FireFox support are included in cp-theme component. To install, run:
 
     ```bash
-    npm install @rhelements/cp-theme --save
+    npm install @patternfly/cp-theme --save
     ```
 
-    #### Use RH Elements theme
+    #### Use PatternFly Elements theme
 
     Open src/index.html and add installed packages:
 
@@ -88,7 +88,7 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
 
     <!-- endbower -->
-    <!-- Todo - add rh-card npm path-->
+    <!-- Todo - add pfe-card npm path-->
     <script src="../bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <!-- endbuild -->
@@ -103,34 +103,34 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
     <!-- angular templates will be automatically converted in js and inserted here -->
     <!-- endinject -->
     <!-- endbuild -->
-    <script src="../node_modules/@rhelements/cp-theme/cp-theme.umd.js"></script>
+    <script src="../node_modules/@patternfly/cp-theme/cp-theme.umd.js"></script>
     ```
 
     If you don't support IE and FireFox, simply open index.html and add this css file to your app:
     ```html
-    <link rel="stylesheet" href="/node_modules/@rhelements/cp-theme/cp-theme.css" />
+    <link rel="stylesheet" href="/node_modules/@patternfly/cp-theme/cp-theme.css" />
     ```
 
     #### Add font:
-    RH Elements uses overpass font. You need add link to the font in to public/index.html file:
+    PatternFly Elements uses overpass font. You need add link to the font in to public/index.html file:
 
     ```
     <link rel="stylesheet" href="http://overpass-30e2.kxcdn.com/overpass.css" />
     ```
 
-    ### Customize RH Elements theme
+    ### Customize PatternFly Elements theme
     In order to customize the theme with your css variable values, go to this folder
-    '/node_modules/@rhelements/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
+    '/node_modules/@patternfly/cp-theme/' and copy cp-theme.umd (if you want to support all browsers) or cp-theme.css(if you don't need all browsers support) to your app folder and include it in your app. Now you can change the css variables as you wish.
 
-5. Add RH Elements web component:
+5. Add PatternFly Elements web component:
 
-    In this step, we install and include web component library that we want to use (rh-card) in our app.
+    In this step, we install and include web component library that we want to use (pfe-card) in our app.
 
-    Here are listed three options to include RH Elements:
+    Here are listed three options to include PatternFly Elements:
 
 
     ```bash
-    npm install @rhelements/rh-card --save
+    npm install @patternfly/pfe-card --save
     ```
 
     Open src/index.html and add installed packages:
@@ -141,7 +141,7 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
     <!-- run `gulp inject` to automatically populate bower script dependencies -->
 
     <!-- endbower -->
-    <!-- Todo - add rh-card npm path-->
+    <!-- Todo - add pfe-card npm path-->
     <script src="../bower_components/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <!-- endbuild -->
@@ -156,9 +156,9 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
     <!-- angular templates will be automatically converted in js and inserted here -->
     <!-- endinject -->
     <!-- endbuild -->
-    <script src="../node_modules/@rhelements/cp-theme/cp-theme.umd.js"></script>
+    <script src="../node_modules/@patternfly/cp-theme/cp-theme.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
-    <script>require(['../node_modules/@rhelements/rh-card/rh-card.umd.js'])</script>
+    <script>require(['../node_modules/@patternfly/pfe-card/pfe-card.umd.js'])</script>
     ```
 
     Note: Don't forget to add type="module" in script tag.
@@ -187,32 +187,32 @@ generator: (https://github.com/Swiip/generator-gulp-angular)
     ```html
     <div class="row">
       <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
-        <rh-card theme="dark" priority="primary" color="accent" style="overflow: hidden; height: 250px;margin-bottom: 15px;">
+        <pfe-card theme="dark" priority="primary" color="accent" style="overflow: hidden; height: 250px;margin-bottom: 15px;">
           <h2 slot="header">{{ awesomeThing.title }}</h2>
           <p><a ng-href="{{awesomeThing.url}}">{{ awesomeThing.url }}</a></p>
-        This is rh-card with a dark theme.
+        This is pfe-card with a dark theme.
           <div slot="footer">{{ awesomeThing.description }}</div>
-        </rh-card>
+        </pfe-card>
       </div>
     </div>
     ```
 
 ### Change theme by using inline style
 
-  If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style="--rh-card--bg: green;" to rh-card:
+  If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style="--pfe-card--bg: green;" to pfe-card:
 
   ```html
   <div class="item" data-text="boop"></div>
-  <rh-card theme="dark" style="--rh-card--bg: green;">
+  <pfe-card theme="dark" style="--pfe-card--bg: green;">
     <h2 slot="header">Dark Theme</h2>
-  This is rh-card with a dark theme.
+  This is pfe-card with a dark theme.
     <div slot="footer">Text in footer</div>
-  </rh-card>
+  </pfe-card>
   ```
 
 ## Reveal page smoothly
 
-By adding [reveal] attribute to body tag, behind the scene, RH Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
+By adding [reveal] attribute to body tag, behind the scene, PatternFly Elements waits for WebComponentsReady event to be fired then reveals the page. This event is fired when polyfills and user scripts have loaded and custom elements have been upgraded. This event is generally not needed; however, it may be useful in some cases like testing.
 
 For more information visit https://github.com/webcomponents/webcomponentsjs#webcomponentsready-event
 
@@ -225,6 +225,6 @@ For more information visit https://github.com/webcomponents/webcomponentsjs#webc
 
   ```html
   <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-  <link media="all" rel="stylesheet" type="text/css" href="../node_modules/@rhelements/rhelement/rhelement.min.css">
+  <link media="all" rel="stylesheet" type="text/css" href="../node_modules/@patternfly/pfelement/pfelement.min.css">
   <!-- bower:css -->
   ```
