@@ -116,6 +116,17 @@
     </pfe-card>
     ```
 
+## TypeScript
+    If you use TypeScript for type checking, you need to use `JSX.IntrinsicElements`. Intrinsic elements will not be type checked. For example:
+
+    ```
+    declare namespace JSX {
+        interface IntrinsicElements {
+            'pfe-card': any
+        }
+    }
+    ```
+
 ## Change theme by using inline style
 
   If you want to change a css variable value in theme, you can add inline style. For example if you want to change background color of a specific card to green, add style={{'--pfe-theme--color--surface--base': 'green'}} to pfe-card:
